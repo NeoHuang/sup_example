@@ -1,0 +1,14 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# All Vagrant configuration is done below. The "2" in Vagrant.configure
+# configures the configuration version (we support older styles for
+# backwards compatibility). Please don't change it unless you know what
+# you're doing.
+Vagrant.configure("2") do |config|
+
+  config.vm.define "vm01" do |vm01|
+    vm01.vm.box = "hashicorp/bionic64"
+    vm01.vm.network "private_network", ip: "10.0.1.4"
+  end
+end
