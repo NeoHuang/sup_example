@@ -11,4 +11,9 @@ Vagrant.configure("2") do |config|
     vm01.vm.box = "hashicorp/bionic64"
     vm01.vm.network "private_network", ip: "10.0.1.4"
   end
+
+  config.vm.define "vm02" do |vm02|
+    vm02.vm.box = "hashicorp/bionic64"
+    vm02.vm.network "private_network", ip: "10.0.1.5"
+  end
 end

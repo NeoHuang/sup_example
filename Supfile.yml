@@ -1,0 +1,26 @@
+# Supfile
+---
+version: 0.4
+
+networks:
+  production:
+    inventory: for i in 4 5; do echo "vagrant@10.0.1.$i"; done
+
+commands:
+  build:
+    desc: build the service
+    local: GOOS=linux GOARCH=amd64 go build -o $SERVICE/$SERVICE $SERVICE/main.go
+  distribute:
+    desc: distribute the binaries
+    upload:
+      - src: $SERVICE/$SERVICE
+        dst: /home/vagrant/$SERVICE/$SERVICE
+  restart:
+    desc: restart the services
+    run: sudo systemctl restart server1
+
+targets:
+  deploy:
+    - build
+    - distribute
+    - restart
