@@ -18,6 +18,7 @@ commands:
   restart:
     desc: restart the services
     run: sudo systemctl restart server1
+    serial: 1
 
 targets:
   deploy:
